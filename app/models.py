@@ -1,8 +1,11 @@
 from django.db import models
 
-from django.contrib.auth.models import AbstractBaseUser
+from django.contrib.auth.models import AbstractUser
+from blog import settings
 
-class CustomUser(AbstractBaseUser):
+User=settings.AUTH_USER_MODEL
+
+class CustomUser(AbstractUser):
     email=models.EmailField(unique=True)
     first_name=models.CharField(max_length=200)
     last_name=models.CharField(max_length=200)
@@ -10,13 +13,14 @@ class CustomUser(AbstractBaseUser):
     is_admin=models.BooleanField(default=False)
     is_user=models.BooleanField(default=True)
     dob=models.DateField()  
-    #12.07
+    
     
     USERNAME_FIELD='email'
-    REQUIRED_FIELDS = ['first_name', 'last_name', 'dob', 'username']
+    REQUIRED_FIELDS = ['first_name', 'last_name',  'username','dob']
     
     def __str__(self):
-        self.email
+        return str(self.username or self.email)
+
     
     
 

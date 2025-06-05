@@ -30,9 +30,6 @@ class UpdateDeleteCategory(generics.RetrieveUpdateDestroyAPIView):
     
     
     
-    
-    
-    
 class AddBlog(generics.CreateAPIView):
     queryset=Blog.objects.all()
     serializer_class=BlogSerializer         
@@ -53,3 +50,11 @@ class DeleteBlog(generics.DestroyAPIView):
     queryset = Blog.objects.all()
     serializer_class = BlogSerializer
        
+       
+       
+User=get_user_model()
+
+
+class RegisterUser(generics.CreateAPIView):
+    queryset=User.objects.all()
+    serializer_class=RegisterSerializer       
