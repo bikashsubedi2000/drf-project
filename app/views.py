@@ -45,6 +45,7 @@ class RetrieveBlog(generics.RetrieveAPIView):
 class UpdateBlog(generics.UpdateAPIView):
     queryset = Blog.objects.all()
     serializer_class = BlogSerializer
+    
 
 class DeleteBlog(generics.DestroyAPIView):
     queryset = Blog.objects.all()
