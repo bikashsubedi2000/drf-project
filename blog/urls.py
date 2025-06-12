@@ -38,7 +38,7 @@ urlpatterns = [
     #url for category
     #path('api/addlistcategory/', AddListCategory.as_view(), name='addcategory'),
     path('api/addcategory/', AddCategory.as_view(), name='addcategory'),
-    # path('api/categorylist/', CategoryList.as_view(), name='categorylist')
+    path('api/categorylist/', CategoryList.as_view(), name='categorylist'),
     path('api/category/<int:pk>/', UpdateDeleteCategory.as_view(), name='category'),
     path('api/updatecategory/<int:pk>/', UpdateDeleteCategory.as_view(), name='updatecategory'),
     path('api/deletecategory/<int:pk>/', UpdateDeleteCategory.as_view(), name='deletecategory'),

@@ -30,9 +30,13 @@ class UpdateDeleteCategory(generics.RetrieveUpdateDestroyAPIView):
 
 
 # ---------- BLOG VIEWS ----------
+
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
+
 class AddBlog(generics.CreateAPIView):
     queryset = Blog.objects.all()
     serializer_class = BlogSerializer
+    persmission_classes=[IsAuthenticated,IsAdminUser]
 
 class ListBlog(generics.ListAPIView):
     queryset = Blog.objects.all()
@@ -70,6 +74,8 @@ class LoginUser(APIView):
                 "email": user.email,
                 "role": user.is_user,
                 "refreshtoken": str(refreshtoken),
-                "accesstoken": str(refreshtoken.access_token)
+                "accesstoken": str(refreshtoken.access_token),
+                "is_staff":user.is_staff,
+                "username":user.username,
             })
         return Response({"error": "Invalid credential"}, status=status.HTTP_400_BAD_REQUEST)
